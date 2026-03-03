@@ -4,26 +4,26 @@ Projet PHP réalisé dans le cadre de la R6.06 (Maintenance applicative).
 
 ## Setup
 
-### 1) Cloner le projet
+### 1 - Cloner le projet
 
 ```bash
-git clone <url-du-repo>
+git clone https://github.com/ethan-hgt/R606_eval
 cd R606_eval
 ```
 
-### 2) Installer les dépendances
+### 2 - Installer les dépendances
 
 ```bash
 composer install
 ```
 
-### 3) Configurer l'environnement
+### 3 - Configurer l'environnement
 
 ```bash
 cp .env.example .env
 ```
 
-### 4) Lancer le projet
+### 4 - Lancer le projet
 
 Option A (local) :
 
