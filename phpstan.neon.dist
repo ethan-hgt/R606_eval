@@ -4,5 +4,8 @@ parameters:
         - index.php
         - migrate.php
         - migrations
+        - src
+    scanDirectories:
+        - src
     excludePaths:
         - database.sqlite
