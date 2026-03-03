@@ -1,4 +1,5 @@
 <?php
+
 $config = require __DIR__ . '/config.php';
 require_once __DIR__ . '/src/ConnexionBdd.php';
 require_once __DIR__ . '/src/TableTexte.php';
