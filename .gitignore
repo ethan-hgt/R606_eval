@@ -2,3 +2,5 @@ database.sqlite
 vendor/
 composer.lock
 .phpunit.result.cache
+.env
+.php-cs-fixer.cache

@@ -26,9 +26,14 @@ $d = $p->query("SELECT id,text FROM db_table")->fetchAll(PDO::FETCH_ASSOC);
 <table>
     <thead style="font-weight: bold;"><tr><td style="border: solid black 1px">Id</td><td style="border: solid black 1px">Text</td></tr></thead>
     <tbody>
-        <?php $i=0; while (true) { if(!key_exists($i, $d)) break;?>
+        <?php $i = 0;
+while (true) {
+    if (!key_exists($i, $d)) {
+        break;
+    }?>
             <tr><td style="border: solid black 1px"><?= $d[$i]['id'] ?></td><td style="border: solid black 1px"><?= $d[$i]['text'] ?></td></tr>
-        <?php $i++; } ?>
+        <?php $i++;
+} ?>
     </tbody>
 </table>
 </body>

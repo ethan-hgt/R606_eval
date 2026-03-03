@@ -1,6 +1,7 @@
 <?php
 
-function runMigrations($pdo) {
+function runMigrations($pdo)
+{
     $pdo->exec('CREATE TABLE IF NOT EXISTS migrations (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         migration VARCHAR(255) NOT NULL,
@@ -12,10 +13,10 @@ function runMigrations($pdo) {
     $migrationFiles = glob(__DIR__ . '/migrations/*.php');
     sort($migrationFiles);
 
-    foreach($migrationFiles as $file) {
+    foreach ($migrationFiles as $file) {
         $migrationName = basename($file);
-        
-        if(in_array($migrationName, $executedMigrations)) {
+
+        if (in_array($migrationName, $executedMigrations)) {
             continue;
         }
 
