@@ -23,7 +23,7 @@ class MigrationsTest extends TestCase
         $migration['up']($this->pdo);
 
         $tables = $this->pdo->query("SELECT name FROM sqlite_master WHERE type='table' AND name='db_table'")->fetchAll();
-        
+
         $this->assertCount(1, $tables);
     }
 
@@ -36,7 +36,7 @@ class MigrationsTest extends TestCase
         $migration2['up']($this->pdo);
 
         $data = $this->pdo->query("SELECT COUNT(*) as count FROM db_table")->fetch();
-        
+
         $this->assertEquals(4, $data['count']);
     }
 }
