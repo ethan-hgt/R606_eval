@@ -1,0 +1,18 @@
+{
+    "name": "ethan/r606-eval",
+    "description": "R6.06 Maintenance applicative",
+    "type": "project",
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.70",
+        "phpunit/phpunit": "^11.0",
+        "phpstan/phpstan": "^1.10"
+    },
+    "scripts": {
+        "lint": "vendor/bin/php-cs-fixer fix --dry-run --diff --config=.php-cs-fixer.php",
+        "test": "vendor/bin/phpunit",
+        "phpstan": "vendor/bin/phpstan analyse"
+    }
+}
