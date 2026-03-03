@@ -7,11 +7,13 @@
 </header>
 
 <?php
-try {
-    $p = new PDO("sqlite:database.sqlite");
+$config = require __DIR__ . '/config.php';
+require_once __DIR__ . '/src/ConnexionBdd.php';
+require_once __DIR__ . '/src/TableTexte.php';
 
-    $p->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $p->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+try {
+    $connexionBdd = new ConnexionBdd($config);
+    $p = $connexionBdd->creerPdo();
 } catch (PDOException $e) {
     echo 'Erreur lors de la connexion à la BDD : ' . $e->getMessage();
     exit();
@@ -20,15 +22,16 @@ try {
 require_once __DIR__ . '/migrate.php';
 runMigrations($p);
 
-$d = $p->query("SELECT id,text FROM db_table")->fetchAll(PDO::FETCH_ASSOC);
+$tableTexte = new TableTexte($p);
+$d = $tableTexte->recupererTout();
 ?>
 
 <table>
     <thead style="font-weight: bold;"><tr><td style="border: solid black 1px">Id</td><td style="border: solid black 1px">Text</td></tr></thead>
     <tbody>
-        <?php $i=0; while (true) { if(!key_exists($i, $d)) break;?>
-            <tr><td style="border: solid black 1px"><?= $d[$i]['id'] ?></td><td style="border: solid black 1px"><?= $d[$i]['text'] ?></td></tr>
-        <?php $i++; } ?>
+        <?php foreach ($d as $row) { ?>
+            <tr><td style="border: solid black 1px"><?= $row['id'] ?></td><td style="border: solid black 1px"><?= $row['text'] ?></td></tr>
+        <?php } ?>
     </tbody>
 </table>
 </body>
